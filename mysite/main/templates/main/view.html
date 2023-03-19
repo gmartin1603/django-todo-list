@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+
+{% block title %} View {% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h3>{{user.username}}</h3>
+        {% for td in user.todolist.all %}
+            <p><a href="/{{td.id}}">{{td.name}}</a></p>
+        {% endfor %}
+    {% else %}
+        <h3><a href="/login"> Login </a> to view your lists or</h3>
+        <br>
+        <h3><a href="/register"> Register </a> to create an account</h3>
+    {% endif %}
+{% endblock %}
